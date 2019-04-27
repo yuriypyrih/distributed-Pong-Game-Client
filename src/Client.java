@@ -1,12 +1,12 @@
 
-
+/*
 import java.net.*;
 import java.io.*;
 import java.util.Scanner;
 public class Client {
 
 	public static void main(String[] args) throws ClassNotFoundException {
-
+*/
 	
 		/*
 		 * Okay so, There should be one Server and two Clients
@@ -19,7 +19,7 @@ public class Client {
 		 * The coordinates of each player will be located on each client machine
 		 * 
 		 * */
- 
+ /*
 	 try{
 		 	Socket sock = new Socket("localhost", 5550);
 
@@ -68,5 +68,5 @@ public class Client {
 	 
 	 
 	}
-}
+}*/
 	
