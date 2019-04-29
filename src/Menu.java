@@ -57,7 +57,7 @@ public class Menu extends MouseAdapter implements MouseMotionListener {
 			
 			g.setColor(Color.WHITE);
 			g.drawString("Basic Game Engine. Ready to use.", 0, 15);
-			
+			g.drawString("Press Enter to Ready", 0, 30);
 			//To draw the background Image to the Menu screen
 			//g.drawImage(menu_background_img,0,0,null);
 			

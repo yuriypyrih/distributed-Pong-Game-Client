@@ -2,6 +2,7 @@
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Toolkit;
 import java.awt.image.BufferStrategy;
 import java.util.Random;
 
@@ -32,7 +33,7 @@ public class Game extends Canvas implements Runnable{
 		//handler = new Handler();
 		//hud = new HUD(handler);
 		menu = new Menu();
-		//this.addKeyListener(new KeyInput(handler,this));
+		this.addKeyListener(new KeyInput(this));
 		this.addMouseListener(menu);
 		this.addMouseMotionListener(menu);
 		
@@ -83,6 +84,7 @@ public class Game extends Canvas implements Runnable{
 			}
 			if(running) {
 				render();
+				Toolkit.getDefaultToolkit().sync();
 			}
 			frames++;
 			if(System.currentTimeMillis() - timer >1000) {
