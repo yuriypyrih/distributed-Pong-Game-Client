@@ -12,10 +12,10 @@ public class KeyInput extends KeyAdapter{
 	private boolean[] keyDown = new boolean[2];
 	
 	//Constructor for KeyInput class
-	public KeyInput( Game game , Player mainPlayer) {
+	public KeyInput( Game game ) {
 		//this.handler = handler;
 		this.game = game;
-		this.mainPlayer = mainPlayer;
+		//this.mainPlayer = mainPlayer;
 		
 		keyDown[0] = false; //W UP
 		keyDown[1] = false; //S DOWN
