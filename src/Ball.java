@@ -70,22 +70,35 @@ public class Ball extends GameObject{
 					if(tempObject.getId() == ID.PLAYER_1) {
 						if(getBounds().intersects(tempObject.getBounds())) {
 							float objY = tempObject.getY();
+							System.out.println("Player Y: " + objY);
+							System.out.println("Ball Y: " + y);
+							System.out.println("Diff: " + (objY-y));
 							
 							//The lower the y the higher the object is
-							if(objY >= y || y - objY < 64) { //Player is higher
-								velY-=5;
+							if(objY >= y || y - objY < 54) { //Player is higher
+								velY = -7;
+								System.out.println("Upper most");
 							}
-							else if(objY - y < 90 ) {
-								velY-=3;
+							else if(y - objY < 70 ) {
+								velY = -5;
+								System.out.println("Upper middle");
 							}
-							else if(objY - y < 166 ) {
-								//velY-=1;
+							else if(y - objY < 186 ) {
+								System.out.println("Center middle");
+								if(velY > 0) {
+									velY = 5;
+								}
+								else {
+									velY = -5;
+								}
 							}
-							else if(objY - y < 192 ) {
-								velY+=3;
+							else if(y - objY < 202 ) {
+								System.out.println("Lower middle");
+								velY =5;
 							}
-							else if(objY - y <= 256 ){
-								velY+=5;
+							else if(y - objY <= 256 ){
+								System.out.println("Lower most");
+								velY =7;
 							}
 							velX *= -1;
 						}
