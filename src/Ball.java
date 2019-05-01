@@ -10,13 +10,14 @@ import java.awt.Rectangle;
 
 public class Ball extends GameObject{
 	
-	private ID playerID = ID.PLAYER_1;
+	//private ID playerID = ID.PLAYER_1;
+	private Handler handler;
 
 
 	//Contructor
-	public Ball(float  x, float y, ID id) {
+	public Ball(float  x, float y, ID id, Handler handler) {
 		super(x, y, id);
-		//this.handler = handler;
+		this.handler = handler;
 		//this.spawner = spawner;
 		//task_manager = new TaskManager(handler);
 		
@@ -28,11 +29,11 @@ public class Ball extends GameObject{
 	
 	
 	public ID getID() {
-		return playerID;
+		return id;
 	}
 	
-	public void setID(ID playerID) {
-		this.playerID = playerID;
+	public void setID(ID id) {
+		this.id = id;
 	}
 	
 	
@@ -61,6 +62,35 @@ public class Ball extends GameObject{
 	private void collision() {
 				if(y <= 0 || y >= Game.HEIGHT - 50) velY *= -1; 
 				if(x <= 0 || x >= Game.WIDTH - 30) velX *= -1;
+				
+				for(int i = 0; i < handler.object.size(); i++) {
+					
+					GameObject tempObject = handler.object.get(i);
+					
+					if(tempObject.getId() == ID.PLAYER_1) {
+						if(getBounds().intersects(tempObject.getBounds())) {
+							float objY = tempObject.getY();
+							
+							//The lower the y the higher the object is
+							if(objY >= y || y - objY < 64) { //Player is higher
+								velY-=5;
+							}
+							else if(objY - y < 90 ) {
+								velY-=3;
+							}
+							else if(objY - y < 166 ) {
+								//velY-=1;
+							}
+							else if(objY - y < 192 ) {
+								velY+=3;
+							}
+							else if(objY - y <= 256 ){
+								velY+=5;
+							}
+							velX *= -1;
+						}
+					}
+				}
 	}//end of collision();
 	
 	public void render(Graphics g) {

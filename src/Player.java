@@ -34,7 +34,7 @@ public class Player extends GameObject{
 	
 	public Rectangle getBounds() {
 		//that's what the hitbox is, not the actuall shape of the sprite
-		return new Rectangle((int)x,(int)y,32,32);
+		return new Rectangle((int)x,(int)y,16,256);
 	}
 	
 
@@ -62,7 +62,7 @@ public class Player extends GameObject{
 		//Appearance
 		
 		g.setColor(Color.WHITE);
-		g.fillRect((int)x,(int) y, 32, 256);
+		g.fillRect((int)x,(int) y, 16, 256);
 	}
 	
 	

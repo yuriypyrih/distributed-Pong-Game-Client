@@ -14,7 +14,7 @@ public class Handler {
 	
 	public Handler() {
 		mainPlayer = new Player(10,10,ID.PLAYER_1);
-		mainBall = new Ball(300,300,ID.BALL);
+		mainBall = new Ball(300,300,ID.BALL,this);
 		
 		addObject(mainPlayer);
 		addObject(mainBall);
