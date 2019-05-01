@@ -3,7 +3,7 @@ import java.awt.event.KeyEvent;
 
 public class KeyInput extends KeyAdapter{
 	
-	//private Handler handler;
+	private Handler handler;
 	private Game game;
 	private Player mainPlayer;
 	
@@ -12,10 +12,10 @@ public class KeyInput extends KeyAdapter{
 	private boolean[] keyDown = new boolean[2];
 	
 	//Constructor for KeyInput class
-	public KeyInput( Game game ) {
-		//this.handler = handler;
+	public KeyInput( Game game , Handler handler) {
+		this.handler = handler;
 		this.game = game;
-		//this.mainPlayer = mainPlayer;
+		this.mainPlayer = handler.getMainPlayer();
 		
 		keyDown[0] = false; //W UP
 		keyDown[1] = false; //S DOWN
@@ -38,6 +38,7 @@ public class KeyInput extends KeyAdapter{
 				}
 				else if(key == KeyEvent.VK_ENTER) {
 					Game.gameState = STATE.GAME;
+					handler.resetGame();
 				}
 				
 				if(WASDkeys) {
@@ -51,6 +52,13 @@ public class KeyInput extends KeyAdapter{
 	public void keyReleased(KeyEvent e) {
 		int key = e.getKeyCode();
 		
+		if(WASDkeys) {
+			if(key == KeyEvent.VK_W) keyDown[0]=false;//tempObject.setVelY(0); 
+			if(key == KeyEvent.VK_S) keyDown[1]=false; //tempObject.setVelY(0); 
+		}
+		
+		//Vertical Movement
+		if(!keyDown[0] && !keyDown[1]) mainPlayer.setVelY(0);
 		
 	}//end of keyReleased Method
 

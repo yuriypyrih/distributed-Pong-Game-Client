@@ -16,10 +16,11 @@ public class Game extends Canvas implements Runnable{
 	private Thread thread;
 	private boolean running = false;
 	
-	//private Handler handler;
+	private Handler handler;
 	//private Random r; 
 	//private HUD hud;
 	private Menu menu;
+	private Player thisPlayer;
 	
 	
 	public static STATE  gameState = STATE.MENU;
@@ -28,12 +29,13 @@ public class Game extends Canvas implements Runnable{
 	//Contructor fot the Game class
 	public Game() {
 		
+		thisPlayer = new Player(0,0,ID.PLAYER_1);
 		//Here we create a Handler object that late will be passed to KeyInput
 		
-		//handler = new Handler();
+		handler = new Handler();
 		//hud = new HUD(handler);
-		menu = new Menu();
-		this.addKeyListener(new KeyInput(this));
+		menu = new Menu(handler);
+		this.addKeyListener(new KeyInput(this,handler));
 		this.addMouseListener(menu);
 		this.addMouseMotionListener(menu);
 		
@@ -103,7 +105,7 @@ public class Game extends Canvas implements Runnable{
 		if(gameState== STATE.GAME) {
 			
 			//hud.tick();
-			//handler.tick();	
+			handler.tick();	
 			
 		}else if(gameState == STATE.MENU ) {
 			
@@ -125,7 +127,7 @@ public class Game extends Canvas implements Runnable{
 		g.setColor(Color.BLACK);
 		g.fillRect(0,0,WIDTH,HEIGHT);
 		
-		//handler.render(g);
+		handler.render(g);
 		
 		if(gameState == STATE.GAME) {
 			//hud.render(g);

@@ -13,9 +13,11 @@ import javax.swing.ImageIcon;
 
 public class Menu extends MouseAdapter implements MouseMotionListener {
 	
+	private Handler handler;
 	
-	//Your background image that should be inside the res folder
-	//private Image menu_background_img = new ImageIcon("res/menu_background.png").getImage();
+	public Menu(Handler handler) {
+		this.handler = handler;
+	}
 	
 	
 	public void mousePressed(MouseEvent e) {

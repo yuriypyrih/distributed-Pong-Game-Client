@@ -1,4 +1,5 @@
 
+
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -7,17 +8,20 @@ import java.awt.Rectangle;
 
 //import entities.Trail;
 
-public class Player extends GameObject{
+public class Ball extends GameObject{
 	
 	private ID playerID = ID.PLAYER_1;
 
 
 	//Contructor
-	public Player(float  x, float y, ID id) {
+	public Ball(float  x, float y, ID id) {
 		super(x, y, id);
 		//this.handler = handler;
 		//this.spawner = spawner;
 		//task_manager = new TaskManager(handler);
+		
+		velY = 5;
+		velX = 5;
 		
 	}
 	
@@ -44,8 +48,8 @@ public class Player extends GameObject{
 		x += velX;
 		y += velY;
 		
-		x = Game.clamp((int)x, 0, Game.WIDTH - 35);
-		y = Game.clamp((int)y, 0, Game.HEIGHT - 280);
+		//x = Game.clamp((int)x, 0, Game.WIDTH - 35);
+		//y = Game.clamp((int)y, 0, Game.HEIGHT - 65);
 		
 		
 		
@@ -55,14 +59,15 @@ public class Player extends GameObject{
 	}
 	
 	private void collision() {
-		
+				if(y <= 0 || y >= Game.HEIGHT - 50) velY *= -1; 
+				if(x <= 0 || x >= Game.WIDTH - 30) velX *= -1;
 	}//end of collision();
 	
 	public void render(Graphics g) {
 		//Appearance
 		
 		g.setColor(Color.WHITE);
-		g.fillRect((int)x,(int) y, 32, 256);
+		g.fillOval((int)x,(int) y, 32, 32);
 	}
 	
 	
