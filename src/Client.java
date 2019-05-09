@@ -15,7 +15,8 @@ public class Client {
 		 	ObjectOutputStream outstream = new ObjectOutputStream(sock.getOutputStream());
 		 	ObjectInputStream instream = new ObjectInputStream(sock.getInputStream());
 		
-
+		 	//This needs to be totally redesigned
+		 	
 		 	System.out.println("Sending Messages to the Server...");
 		 	System.out.println("Connecting to "+ sock.getInetAddress()+ " and port "+sock.getPort());
 		 	System.out.println("Local Address :"+sock.getLocalAddress()+" Port:"+sock.getLocalPort());
